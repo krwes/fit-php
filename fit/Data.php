@@ -36,6 +36,42 @@ require_once __DIR__.'/Enums.php';
  */
 class Data {
 	
+	/**
+	 * Convert semicircles to degrees.
+	 * @param int $semicircles
+	 * @return decimal
+	 */
+	public static function positionToDegrees($semicircles) {
+		return number_format(round($semicircles / (pow(2,31) / 180), 6, PHP_ROUND_HALF_EVEN), 6, '.', '');
+	}
+	
+	/**
+	 * Convert degrees to semicircles.
+	 * @param decimal $degrees
+	 * @return int
+	 */
+	public static function positionToSemicircles($degrees) {
+		return round($degrees * (pow(2,31) / 180), 0, PHP_ROUND_HALF_EVEN);
+	}
+	
+	/**
+	 * Convert Garmin epoch time to unix timestamp.
+	 * @param int $garmin_epoch
+	 * @return int
+	 */
+	public static function timeToUnix($garmin_epoch) {
+		return $garmin_epoch + mktime(0,0,0,12,31,1989);
+	}
+	
+	/**
+	 * Convert unix time to Garmin epoch timestamp.
+	 * @param int $unixtime
+	 * @return int
+	 */
+	public static function timeToGarminEpoch($unixtime) {
+		return $unixtime - mktime(0,0,0,12,31,1989);
+	}
+	
 	private $_store = array();
 	private $_filetype;
 	
@@ -44,11 +80,11 @@ class Data {
 	 * @param string $msg_name
 	 * @param array $msg_data
 	 * @return \Fit\Data
-	 * @throws \Fit\DataException
+	 * @throws \Fit\Exception
 	 */
 	public function add($msg_name, array $msg_data) {
 		if ($this->_filetype === null) {
-			throw new \Fit\DataException('FileType not set, use ->setFile($type) before adding messages.');
+			\Fit\Exception::create(1005);
 		}
 		$msg_name	= (string)$msg_name;
 		$msg_found	= false;
@@ -88,9 +124,7 @@ class Data {
 			$this->_store[$this->_filetype] = array();
 			return true;
 		}
-		$this->_filetype = null;
-		return false;
+		\Fit\Exception::create(1004);
 	}
 	
 }
-class DataException extends \Exception {}

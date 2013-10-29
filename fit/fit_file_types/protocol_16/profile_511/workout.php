@@ -9,11 +9,11 @@ return array(
 			'fields'			=> array(
 				//		name,	field_def_number, factor, unit,	base_type_number, size
 				array('type',				0,		1,		'',		\Fit\Core::ENUM		,1),
-				array('manufacturer',		1,		1,		'',		\Fit\Core::UINT16		,2),
-				array('product',			2,		1,		'',		\Fit\Core::UINT16		,2),
+				array('manufacturer',		1,		1,		'',		\Fit\Core::UINT16	,2),
+				array('product',			2,		1,		'',		\Fit\Core::UINT16	,2),
 				array('serial_number',		3,		1,		'',		\Fit\Core::UINT32Z	,4),
 				array('time_created',		4,		1,		'',		\Fit\Core::TIME		,4),
-				array('number',				5,		1,		'',		\Fit\Core::UINT16		,2),
+				array('number',				5,		1,		'',		\Fit\Core::UINT16	,2),
 			),
 		),
 		array(
@@ -24,8 +24,8 @@ return array(
 				//		name,	field_def_number, factor, unit,	base_type_number, size
 				array('sport',				0,		1,		'',		\Fit\Core::ENUM		,1),
 				array('capabilities',		1,		1,		'',		\Fit\Core::UINT32Z	,4),
-				array('num_valid_steps',	2,		1,		'',		\Fit\Core::UINT16		,2),
-				array('wkt_name',			3,		1,		'',		\Fit\Core::STRING		,32),
+				array('num_valid_steps',	2,		1,		'',		\Fit\Core::UINT16	,2),
+				array('wkt_name',			3,		1,		'',		\Fit\Core::STRING	,64),
 			),
 		),
 		array(
