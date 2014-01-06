@@ -31,7 +31,7 @@ require_once __DIR__.'/Enums.php';
  * Helper class to generate well-formed data that can be written by the 
  * \Fit\Writer class.
  *
- * @example examples/create_data.php How to use this class
+ * @example examples/write_and_read_fit_data.php How to use this class
  * @uses \Zend_Io_Reader Binary file parser
  */
 class Data {
