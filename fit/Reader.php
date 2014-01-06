@@ -314,7 +314,10 @@ class Reader extends \Fit\Core {
 						');
 			if (isset($data)) {
 				foreach($data as $k => $d) {
-					static::$log->add('<td style="'.$style.'">'.$k.': '.$d['value'].$d['unit'].'</td>');
+					$v = $d['value'];
+					if (stripos($k, 'time') !== false && stripos($k, 'total') === false) $v = strftime('%FT%H:%M:%S%z', \Fit\Data::timeToUnix($v));
+					elseif ($d['unit'] === 'deg') $v = \Fit\Data::positionToDegrees($v);
+					static::$log->add('<td style="'.$style.'">'.$k.': '.$v.$d['unit'].'</td>');
 				}
 			}
 			static::$log->add('</tr>');

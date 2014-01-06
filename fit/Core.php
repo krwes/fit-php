@@ -129,6 +129,8 @@ class Exception extends \Exception {
 		1001 => 'Unable to open file for writing.',
 		1002 => 'Missing file_id in messages.',
 		1003 => 'Unable to open file for reading.',
+		1004 => 'Unknown file_type.',
+		1005 => 'FileType not set, use ->setFile($type) before adding messages.',
 	);
 	
 	/**
