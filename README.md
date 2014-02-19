@@ -4,7 +4,6 @@ fit-php
 A PHP class to encode and decode Garmin .FIT files, based on the FIT SDK.
 The FIT SDK can be found at: http://www.thisisant.com/resources/fit
 
-This module will help you read and write binary .FIT files. FIT is the standard format 
 
 Example
 
